@@ -4,7 +4,6 @@ let password = document.querySelector("#password");
 let modal = document.querySelector("#modal");
 let form = document.querySelector("#form");
 
-
 // -------------------event click------------------
 
 // login.addEventListener('click',function(){
@@ -36,8 +35,6 @@ let form = document.querySelector("#form");
 
 // -------------------event submit && form data-------------------
 
-// console.log(form);
-
 // form.addEventListener("submit", function (e) {
 //   let form = document.querySelector("#form");
 //   e.preventDefault();
@@ -50,7 +47,7 @@ let form = document.querySelector("#form");
 //   if (userNameValue.length < 12) {
 //     modal.textContent = "Your username must be at least 12 characters long ";
 //     modal.style.display = "block";
-    
+
 //   } else if (passwordValue.length < 8) {
 //     modal.textContent = "Your password must be at least 8 characters long ";
 //     modal.style.display = "block";
@@ -95,8 +92,7 @@ let form = document.querySelector("#form");
 //         }, 3000);
 // }})
 
-
-// --------------- new event blur --------------
+// --------------- event blur with to addEventListener --------------
 
 // function checkBlur(focusItem,Length){
 //   focusItem.addEventListener("blur",function(){
@@ -117,27 +113,50 @@ let form = document.querySelector("#form");
 
 // userName.addEventListener('focus',checkBlur(userName,12))
 // password.addEventListener('focus',checkBlur(password,8))
-// -------------------------------------------------------------------
 
+// --------------- using blur with arry in bind ------------------
 
-// userName.addEventListener('focus',function(){
-//   userName.addEventListener('keyup',function(){
-//     // console.log('hi');
-//     let length=userName.value.length
-//     // console.log(length);
-//     if(length<12){
-//       userNameHelp.style.color='red'
-//       userNameHelp.style.display='block'
-//     }else{
-//       userNameHelp.style.color='green'
-//       setTimeout(() => {
-//         userNameHelp.style.display='none'
-//       }, 3000);
-      
-//     }
-//   })
-// })
+// let checkBlur=function(args){
+//   let input=args[0]
+//   let Length=args[1]
+//   let userValue=input.value
+//   if (userValue.length < Length) {
+//       let show;
+//       args[0]===userName ? show= 'user Name' :show="Password"
+//       modal.textContent = `Your ${show} must be at least ${Length} characters long `;
+//     modal.style.backgroundColor = "red";
+//     modal.style.display = "block";
 
+//     setTimeout(() => {
+//       modal.style.display = "none";
+//       modal.style.backgroundColor = "inherit";
+
+//     }, 3000);
+//   }}
+
+//   userName.addEventListener("blur",checkBlur.bind(this,[userName,12]))
+//   password.addEventListener("blur",checkBlur.bind(this,[password,8]))
+
+// ---------------- using blur with bind ----------------
+
+// let checkBlur=function(input,Length){
+//   let userdValue=input.value
+//   if (userdValue.length < Length) {
+//      let show;
+//       input===userName ? show= 'User Name' :show="Password"
+//       modal.textContent = `Your ${show} must be at least ${Length} characters long `;
+//     modal.style.backgroundColor = "red";
+//     modal.style.display = "block";
+
+//     setTimeout(() => {
+//       modal.style.display = "none";
+//       modal.style.backgroundColor = "inherit";
+
+//     }, 3000);
+//   }}
+
+//   userName.addEventListener("blur",checkBlur.bind(this,userName,12))
+//   password.addEventListener("blur",checkBlur.bind(this,password,8))
 
 // --------------- check validaition ----------------
 
@@ -155,13 +174,11 @@ let form = document.querySelector("#form");
 //       setTimeout(() => {
 //         inputHelp.style.display='none'
 //       }, 3000);
-      
+
 //     }
 //   })
 //   }
 
 //   userName.addEventListener('focus',checkValid(userName,userNameHelp,12))
 //   password.addEventListener('focus',checkValid(password,passwordHelp,8))
-  // -----------------------------------------------------------------------
-
-    
+// -----------------------------------------------------------------------
